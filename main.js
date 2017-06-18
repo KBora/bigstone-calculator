@@ -1,10 +1,10 @@
 var CALCULATOR = (function () {
 
   var
-    loanAmount = 1000,
-    repaymentTermInMonths = 3,
-    companyRating = 2,
-    personalRating = 2,
+    loanAmount = 10000,
+    repaymentTermInMonths = 12,
+    companyRating = 1,
+    personalRating = 1,
     lower_rate_matrix =
       {
         1: {
@@ -51,8 +51,6 @@ var CALCULATOR = (function () {
 
     ;
 
-    
-
 
   return { // these are the 'public' functions
 
@@ -63,7 +61,8 @@ var CALCULATOR = (function () {
         "interest_rate": interest_rate,
         "monthly_interest_rate": interest_rate / 12,
         "total_repayment_amount": total_repayment_amount,
-        "weekly_repayment_amount": total_repayment_amount / 52
+        "weekly_repayment_amount": total_repayment_amount / 52,
+        "total_cost_of_loan": total_repayment_amount - loanAmount
       }
     },
 
@@ -105,11 +104,36 @@ var CALCULATOR = (function () {
 
 })();
 
-
-var RENDERER = (function () {
-
+var UTIL = (function() {
+  return {
+    filterInt: function(value) {
+      if (/([0-9]+)$/.test(value)) {
+        return Number(value);
+      }
+      return NaN;
+    }   
+  }
 })();
 
+
+var RENDER = (function () {
+  return {
+    renderRepaymentAmounts: function() {
+      accounting.settings.currency.precision = 0;
+      var calc = CALCULATOR.calculate_estimate();
+      $("#totalRepayment .result-amount").html(accounting.formatMoney(calc.total_repayment_amount));
+      $("#totalCost .result-amount").html(accounting.formatMoney(calc.total_cost_of_loan));
+      $("#weeklyRepayment .result-amount").html(accounting.formatMoney(calc.weekly_repayment_amount));
+
+    },
+
+  }
+})();
+
+
+$(document).ready(function () { 
+  RENDER.renderRepaymentAmounts();
+});
 
 
 

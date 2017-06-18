@@ -2,6 +2,7 @@
 
 <head>
 	<link rel="stylesheet" href="style.css">
+	<script src="https://static.hsstatic.net/jquery-libs/static-1.4/jquery/jquery-1.11.2.js"></script>
 </head>
 <body>
 	
@@ -18,58 +19,58 @@
 <div class="section">
 	<div class="heading">REPAYMENT TERM (months)</div>
 	<ul class="select-boxes">
-		<li class="select-box">3</li>
-		<li class="select-box">6</li>
-		<li class="select-box">9</li>
-		<li class="select-box">12</li>
-		<li class="select-box">18</li>
-		<li class="select-box">24</li>
+		<li class="select-box" data-value="3">3</li>
+		<li class="select-box" data-value="6">6</li>
+		<li class="select-box" data-value="9">9</li>
+		<li class="select-box selected"  data-value="12">12</li>
+		<li class="select-box" data-value="18">18</li>
+		<li class="select-box" data-value="24">24</li>
 	</ul>
 </div>
 
 <div class="section">
 	<div class="heading">HOW IS YOUR BUSINESS GOING?</div>
 	<ul class="select-boxes">
-		<li class="select-box">Never better</li>
-		<li class="select-box">Better than last year</li>
-		<li class="select-box">Tracking along</li>
-		<li class="select-box">Need some help</li>
+		<li class="select-box selected" data-value="1">Never better</li>
+		<li class="select-box" data-value="2">Better than last year</li>
+		<li class="select-box" data-value="3">Tracking along</li>
+		<li class="select-box" data-value="4">Need some help</li>
 	</ul>  
 </div>
 
 <div class="section">
 	<div class="heading">YOUR PERSONAL CREDIT RATING</div>
 	<ul class="select-boxes">
-		<li class="select-box">Excellent</li>
-		<li class="select-box">Great</li>
-		<li class="select-box">Pretty good</li>
-		<li class="select-box">Not so good</li>
+		<li class="select-box selected" data-value="1">Excellent</li>
+		<li class="select-box" data-value="2">Great</li>
+		<li class="select-box" data-value="3">Pretty good</li>
+		<li class="select-box" data-value="4">Not so good</li>
 	</ul>
 </div>
 
 <div class="results">
 	<ul class="result-boxes">
-		<li class="select-box">
+		<li class="select-box" id="totalRepayment">
 			<div class="result-amount">
-				$X,XXX
+				
 			</div>
 			<div class="result-label">
 				Total repayment<br>fee inclusive
 			</div>
 		</li>
 
-		<li class="select-box">
+		<li class="select-box" id="totalCost">
 			<div class="result-amount">
-				$X,XXX
+				
 			</div>
 			<div class="result-label">
 				Total cost of loan<br>fee inclusive
 			</div>
 		</li>
 
-		<li class="select-box">
+		<li class="select-box" id="weeklyRepayment">
 			<div class="result-amount">
-				$X,XXX
+				
 			</div>
 			<div class="result-label">
 				Weekly repayment<br>fee inclusive
@@ -79,6 +80,7 @@
 	</ul>
 </div>
 
+<script src="accounting.js"></script>
 <script src="main.js"></script>
 </body>
 
