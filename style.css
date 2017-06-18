@@ -25,5 +25,21 @@
 }
 
 .select-box.selected {
-  background: red;
+  background:yellow;
+}
+
+.rangeslider,
+input[type='range'] {
+  width: 100%;
+}
+
+.rangeslider__handle {
+  border-radius: 10px;
+  min-width: 62px;
+  line-height: 42px;
+  text-align: center;
+}
+
+.rangeslider__handle:after {
+  background: 0;
 }

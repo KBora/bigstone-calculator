@@ -104,21 +104,27 @@ var CALCULATOR = (function () {
 
 })();
 
-var UTIL = (function() {
+var UTIL = (function () {
   return {
-    filterInt: function(value) {
+    filterInt: function (value) {
       if (/([0-9]+)$/.test(value)) {
         return Number(value);
       }
       return NaN;
-    }   
+    },
+
+    updateHandle: function (el, val) {
+      el.textContent = val;
+    }
+
   }
+
 })();
 
 
 var RENDER = (function () {
   return {
-    repaymentAmounts: function() {
+    repaymentAmounts: function () {
       accounting.settings.currency.precision = 0;
       var results = CALCULATOR.calculate_estimate();
       $("#totalRepayment .result-amount").html(accounting.formatMoney(results.total_repayment_amount));
@@ -126,28 +132,28 @@ var RENDER = (function () {
       $("#weeklyRepayment .result-amount").html(accounting.formatMoney(results.weekly_repayment_amount));
     },
 
-    repaymentTerm: function() {
+    repaymentTerm: function () {
       $("#repaymentTerm li").removeClass('selected');
       $("#repaymentTerm")
         .find("[data-value='" + CALCULATOR.getRepaymentTermInMonths() + "']")
         .addClass("selected");
     },
 
-    companyRating: function() {
+    companyRating: function () {
       $("#companyRating li").removeClass('selected');
       $("#companyRating")
         .find("[data-value='" + CALCULATOR.getCompanyRating() + "']")
         .addClass("selected");
     },
 
-    personalRating: function() {
+    personalRating: function () {
       $("#personalRating li").removeClass('selected');
       $("#personalRating")
         .find("[data-value='" + CALCULATOR.getPersonalRating() + "']")
         .addClass("selected");
     },
 
-    calculator: function() {
+    calculator: function () {
       this.repaymentTerm();
       this.companyRating();
       this.personalRating();
@@ -159,20 +165,42 @@ var RENDER = (function () {
 })();
 
 
-$(document).ready(function () { 
+
+
+$(document).ready(function () {
+
+  // update range slider knob with loan amount
+
+  var $rangeSlider = $('input[type="range"]');
+
+  $rangeSlider
+    .rangeslider({
+      polyfill: false,
+      onInit: function () {
+        var $handle = $('.rangeslider__handle', this.$range);
+        UTIL.updateHandle($handle[0], this.value);
+      }
+    })
+    .on('input', function (e) {
+      var $handle = $('.rangeslider__handle', e.target.nextSibling);
+      UTIL.updateHandle($handle[0], this.value);
+      
+      CALCULATOR.setLoanAmount(UTIL.filterInt(this.value));
+      RENDER.calculator();
+    });
 
   // add onclick events 
-  $("#repaymentTerm li").on('click', function() {
+  $("#repaymentTerm li").on('click', function () {
     CALCULATOR.setRepaymentTermInMonths(UTIL.filterInt($(this).attr("data-value")));
     RENDER.calculator();
   });
 
-  $("#companyRating li").on('click', function() {
+  $("#companyRating li").on('click', function () {
     CALCULATOR.setCompanyRating(UTIL.filterInt($(this).attr("data-value")));
     RENDER.calculator();
   });
 
-  $("#personalRating li").on('click', function() {
+  $("#personalRating li").on('click', function () {
     CALCULATOR.setPersonalRating(UTIL.filterInt($(this).attr("data-value")));
     RENDER.calculator();
   });

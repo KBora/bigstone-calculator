@@ -1,87 +1,94 @@
 <html>
 
 <head>
+
+	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.0/rangeslider.min.css">
 	<link rel="stylesheet" href="style.css">
-	<script src="https://static.hsstatic.net/jquery-libs/static-1.4/jquery/jquery-1.11.2.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.0/rangeslider.min.js"></script>
 </head>
+
 <body>
-	
+
 	<div class="section">
 		<div class="heading">HOW MUCH DO YOU NEED?</div>
 		<div class="button-adjust-loan">-$1K</div>
 		<div class="range-slider">
-    <!-- TODO: Range slider goes here
-  -->
-</div>
-<div class="button-adjust-loan">+$1K</div>
-</div>
+			<input type="range"
+				min="10000"                    // default 0
+    			max="250000"                  // default 100
+    			step="1000"                   // default 1
+    			value="10000">
+		</div>
+		<div class="button-adjust-loan">+$1K</div>
+	</div>
 
-<div class="section">
-	<div class="heading">REPAYMENT TERM (months)</div>
-	<ul class="select-boxes" id="repaymentTerm">
-		<li class="select-box" data-value="3">3</li>
-		<li class="select-box" data-value="6">6</li>
-		<li class="select-box" data-value="9">9</li>
-		<li class="select-box" data-value="12">12</li>
-		<li class="select-box" data-value="18">18</li>
-		<li class="select-box" data-value="24">24</li>
-	</ul>
-</div>
+	<div class="section">
+		<div class="heading">REPAYMENT TERM (months)</div>
+		<ul class="select-boxes" id="repaymentTerm">
+			<li class="select-box" data-value="3">3</li>
+			<li class="select-box" data-value="6">6</li>
+			<li class="select-box" data-value="9">9</li>
+			<li class="select-box" data-value="12">12</li>
+			<li class="select-box" data-value="18">18</li>
+			<li class="select-box" data-value="24">24</li>
+		</ul>
+	</div>
 
-<div class="section">
-	<div class="heading">HOW IS YOUR BUSINESS GOING?</div>
-	<ul class="select-boxes" id="companyRating">
-		<li class="select-box" data-value="1">Never better</li>
-		<li class="select-box" data-value="2">Better than last year</li>
-		<li class="select-box" data-value="3">Tracking along</li>
-		<li class="select-box" data-value="4">Need some help</li>
-	</ul>  
-</div>
+	<div class="section">
+		<div class="heading">HOW IS YOUR BUSINESS GOING?</div>
+		<ul class="select-boxes" id="companyRating">
+			<li class="select-box" data-value="1">Never better</li>
+			<li class="select-box" data-value="2">Better than last year</li>
+			<li class="select-box" data-value="3">Tracking along</li>
+			<li class="select-box" data-value="4">Need some help</li>
+		</ul>
+	</div>
 
-<div class="section">
-	<div class="heading">YOUR PERSONAL CREDIT RATING</div>
-	<ul class="select-boxes" id="personalRating">
-		<li class="select-box" data-value="1">Excellent</li>
-		<li class="select-box" data-value="2">Great</li>
-		<li class="select-box" data-value="3">Pretty good</li>
-		<li class="select-box" data-value="4">Not so good</li>
-	</ul>
-</div>
+	<div class="section">
+		<div class="heading">YOUR PERSONAL CREDIT RATING</div>
+		<ul class="select-boxes" id="personalRating">
+			<li class="select-box" data-value="1">Excellent</li>
+			<li class="select-box" data-value="2">Great</li>
+			<li class="select-box" data-value="3">Pretty good</li>
+			<li class="select-box" data-value="4">Not so good</li>
+		</ul>
+	</div>
 
-<div class="results">
-	<ul class="result-boxes">
-		<li class="select-box" id="totalRepayment">
-			<div class="result-amount">
-				
-			</div>
-			<div class="result-label">
-				Total repayment<br>fee inclusive
-			</div>
-		</li>
+	<div class="results">
+		<ul class="result-boxes">
+			<li class="select-box" id="totalRepayment">
+				<div class="result-amount">
 
-		<li class="select-box" id="totalCost">
-			<div class="result-amount">
-				
-			</div>
-			<div class="result-label">
-				Total cost of loan<br>fee inclusive
-			</div>
-		</li>
+				</div>
+				<div class="result-label">
+					Total repayment<br>fee inclusive
+				</div>
+			</li>
 
-		<li class="select-box" id="weeklyRepayment">
-			<div class="result-amount">
-				
-			</div>
-			<div class="result-label">
-				Weekly repayment<br>fee inclusive
-			</div>
-		</li>
+			<li class="select-box" id="totalCost">
+				<div class="result-amount">
 
-	</ul>
-</div>
+				</div>
+				<div class="result-label">
+					Total cost of loan<br>fee inclusive
+				</div>
+			</li>
 
-<script src="accounting.js"></script>
-<script src="main.js"></script>
+			<li class="select-box" id="weeklyRepayment">
+				<div class="result-amount">
+
+				</div>
+				<div class="result-label">
+					Weekly repayment<br>fee inclusive
+				</div>
+			</li>
+
+		</ul>
+	</div>
+
+	<script src="accounting.js"></script>
+	<script src="main.js"></script>
 </body>
 
 </html>
