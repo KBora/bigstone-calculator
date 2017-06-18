@@ -118,21 +118,66 @@ var UTIL = (function() {
 
 var RENDER = (function () {
   return {
-    renderRepaymentAmounts: function() {
+    repaymentAmounts: function() {
       accounting.settings.currency.precision = 0;
-      var calc = CALCULATOR.calculate_estimate();
-      $("#totalRepayment .result-amount").html(accounting.formatMoney(calc.total_repayment_amount));
-      $("#totalCost .result-amount").html(accounting.formatMoney(calc.total_cost_of_loan));
-      $("#weeklyRepayment .result-amount").html(accounting.formatMoney(calc.weekly_repayment_amount));
-
+      var results = CALCULATOR.calculate_estimate();
+      $("#totalRepayment .result-amount").html(accounting.formatMoney(results.total_repayment_amount));
+      $("#totalCost .result-amount").html(accounting.formatMoney(results.total_cost_of_loan));
+      $("#weeklyRepayment .result-amount").html(accounting.formatMoney(results.weekly_repayment_amount));
     },
+
+    repaymentTerm: function() {
+      $("#repaymentTerm li").removeClass('selected');
+      $("#repaymentTerm")
+        .find("[data-value='" + CALCULATOR.getRepaymentTermInMonths() + "']")
+        .addClass("selected");
+    },
+
+    companyRating: function() {
+      $("#companyRating li").removeClass('selected');
+      $("#companyRating")
+        .find("[data-value='" + CALCULATOR.getCompanyRating() + "']")
+        .addClass("selected");
+    },
+
+    personalRating: function() {
+      $("#personalRating li").removeClass('selected');
+      $("#personalRating")
+        .find("[data-value='" + CALCULATOR.getPersonalRating() + "']")
+        .addClass("selected");
+    },
+
+    calculator: function() {
+      this.repaymentTerm();
+      this.companyRating();
+      this.personalRating();
+      this.repaymentAmounts();
+    }
+
 
   }
 })();
 
 
 $(document).ready(function () { 
-  RENDER.renderRepaymentAmounts();
+
+  // add onclick events 
+  $("#repaymentTerm li").on('click', function() {
+    CALCULATOR.setRepaymentTermInMonths(UTIL.filterInt($(this).attr("data-value")));
+    RENDER.calculator();
+  });
+
+  $("#companyRating li").on('click', function() {
+    CALCULATOR.setCompanyRating(UTIL.filterInt($(this).attr("data-value")));
+    RENDER.calculator();
+  });
+
+  $("#personalRating li").on('click', function() {
+    CALCULATOR.setPersonalRating(UTIL.filterInt($(this).attr("data-value")));
+    RENDER.calculator();
+  });
+
+  RENDER.calculator();
 });
 
 
