@@ -184,7 +184,7 @@ $(document).ready(function () {
     .on('input', function (e) {
       var $handle = $('.rangeslider__handle', e.target.nextSibling);
       UTIL.updateHandle($handle[0], this.value);
-      
+
       CALCULATOR.setLoanAmount(UTIL.filterInt(this.value));
       RENDER.calculator();
     });
@@ -203,6 +203,22 @@ $(document).ready(function () {
   $("#personalRating li").on('click', function () {
     CALCULATOR.setPersonalRating(UTIL.filterInt($(this).attr("data-value")));
     RENDER.calculator();
+  });
+
+  $("#decrementLoan").on('click', function () {
+    var $r = $("#rangeSlider"),
+      increment = UTIL.filterInt($r.attr('step')),
+      newValue = UTIL.filterInt($r.val()) - increment;
+
+    $r.val(newValue).change();
+  });
+
+  $("#incrementLoan").on('click', function () {
+    var $r = $("#rangeSlider"),
+      increment = UTIL.filterInt($r.attr('step')),
+      newValue = UTIL.filterInt($r.val()) + increment;
+
+    $r.val(newValue).change();
   });
 
   RENDER.calculator();

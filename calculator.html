@@ -1,8 +1,6 @@
 <html>
 
 <head>
-
-	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.0/rangeslider.min.css">
 	<link rel="stylesheet" href="style.css">
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.0/rangeslider.min.js"></script>
@@ -12,15 +10,17 @@
 
 	<div class="section">
 		<div class="heading">HOW MUCH DO YOU NEED?</div>
-		<div class="button-adjust-loan">-$1K</div>
-		<div class="range-slider">
-			<input type="range"
-				min="10000"                    // default 0
-    			max="250000"                  // default 100
-    			step="1000"                   // default 1
-    			value="10000">
+		<div class="range-slider-section">
+			<div class="button-adjust-loan"><button id="decrementLoan">-$1K</button></div>
+			<div class="range-slider">
+				<input type="range" id="rangeSlider"
+					min="10000"                    // default 0
+					max="250000"                  // default 100
+					step="1000"                   // default 1
+					value="10000">
+			</div>
+			<div class="button-adjust-loan"><button id="incrementLoan">+$1K</button></div>
 		</div>
-		<div class="button-adjust-loan">+$1K</div>
 	</div>
 
 	<div class="section">
