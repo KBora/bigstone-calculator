@@ -114,7 +114,7 @@ var UTIL = (function () {
     },
 
     updateHandle: function (el, val) {
-      el.textContent = val;
+      el.textContent = accounting.formatMoney(val);
     }
 
   }
@@ -125,7 +125,6 @@ var UTIL = (function () {
 var RENDER = (function () {
   return {
     repaymentAmounts: function () {
-      accounting.settings.currency.precision = 0;
       var results = CALCULATOR.calculate_estimate();
       $("#totalRepayment .result-amount").html(accounting.formatMoney(results.total_repayment_amount));
       $("#totalCost .result-amount").html(accounting.formatMoney(results.total_cost_of_loan));
@@ -168,7 +167,8 @@ var RENDER = (function () {
 
 
 $(document).ready(function () {
-
+  accounting.settings.currency.precision = 0;
+  
   // update range slider knob with loan amount
 
   var $rangeSlider = $('input[type="range"]');

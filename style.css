@@ -1,3 +1,17 @@
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif
+}
+
+.section {
+  margin-bottom: 35px;
+}
+
+.heading {
+  font-weight: 700;
+  color: #437cbf;
+  margin-bottom: 0.85em;
+}
+
 .select-boxes,
 .result-boxes 
 {
@@ -10,30 +24,56 @@
   display: -webkit-flex;
   display: flex;
   justify-content: center;
+  background: #eeeeee;
+  border: 1px solid #cccccc;
+  border-radius: 7px;
 }
 
 .select-box
 {
   flex-grow: 1;
-  min-width: 100px;
-  border-right: 1px solid grey;
-  padding: 5px;
-  height: 80px;
-  margin-top: 10px;
-  cursor: pointer;
+    border-right: 1px solid #cccccc;
+    padding: 15px;
+    cursor: pointer;
+    text-align: center;
 }
 
 .select-box:last-child {
   border-right: none;
 }
 
+.result-box
+{
+    flex-grow: 1;
+    background: #437cbf;
+    color: white;
+    border-right: 1px solid #cccccc;
+    padding: 15px;
+    text-align: center;
+
+}
+
+.result-box:last-child {
+  border-right: none;
+}
+
+.result-box .result-amount {
+  font-size: 2.2em;
+}
+
+.result-box .result-label {
+  font-size: 0.75em;
+}
+
+
+
 .select-box.selected {
-  background:orange;
+  background:#437cbf;
+  color: white;
 }
 
 .range-slider-section {
   display: flex;
-  margin: 20px 0;
 }
 
 .button-adjust-loan {
@@ -48,9 +88,10 @@
   border: 0px;
   box-shadow: none;
   border-radius: 5px;
-  background: orange;
+  background: #f27807;
   padding: 10px;
   width: 70px;
+  color: white;
 }
 
 
@@ -97,7 +138,7 @@
 }
 
 .rangeslider__fill {
-  background: orange;
+  background: #e6e6e6;
   position: absolute;
 }
 .rangeslider--horizontal .rangeslider__fill {
@@ -184,9 +225,11 @@ input[type='range'] {
 
 .rangeslider__handle {
   border-radius: 10px;
-  min-width: 62px;
+  min-width: 85px;
   line-height: 42px;
   text-align: center;
+  background: #437cbf;
+  color: white;
 }
 
 .rangeslider__handle:after {
