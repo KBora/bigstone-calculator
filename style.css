@@ -27,6 +27,7 @@ body {
   background: #eeeeee;
   border: 1px solid #cccccc;
   border-radius: 7px;
+  overflow: hidden;
 }
 
 .select-box
@@ -234,4 +235,18 @@ input[type='range'] {
 
 .rangeslider__handle:after {
   background: 0;
+}
+
+@media screen and (max-width: 375px) {
+  .select-box {
+    font-size: 12px;
+  }
+  .result-box .result-label {
+    font-size: 0.65em;
+    line-height: 1em;
+  }
+  .result-box .result-amount {
+    font-size: 1.5em;
+    margin-bottom: 5px;
+  }
 }

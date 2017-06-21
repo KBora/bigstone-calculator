@@ -55,7 +55,7 @@ var CALCULATOR = (function () {
   return { // these are the 'public' functions
 
     calculate_estimate: function () {
-      var interest_rate = lower_rate_matrix[companyRating][personalRating];
+      var interest_rate = 2 + lower_rate_matrix[companyRating][personalRating];
       var total_repayment_amount = amount_from_interest_rate(add_fee(loanAmount), repaymentTermInMonths, interest_rate);
       return {
         "interest_rate": interest_rate,
@@ -168,7 +168,7 @@ var RENDER = (function () {
 
 $(document).ready(function () {
   accounting.settings.currency.precision = 0;
-  
+
   // update range slider knob with loan amount
 
   var $rangeSlider = $('input[type="range"]');
