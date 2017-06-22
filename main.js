@@ -61,7 +61,7 @@ var CALCULATOR = (function () {
         "interest_rate": interest_rate,
         "monthly_interest_rate": interest_rate / 12,
         "total_repayment_amount": total_repayment_amount,
-        "weekly_repayment_amount": total_repayment_amount / 52,
+        "weekly_repayment_amount": total_repayment_amount / (52 * (repaymentTermInMonths / 12)),
         "total_cost_of_loan": total_repayment_amount - loanAmount
       }
     },
